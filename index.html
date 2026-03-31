@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peace of Eden - Holistic Healing with Kane Rawle</title>
+  <meta name="description" content="Kane Rawle - Multi-Modality Practitioner offering Bioresonance, Esoteric Acupuncture, Breathwork and Sound Healing in Kiel Mountain, Sunshine Coast QLD. Sessions from $140." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --eucalyptus:  #54605C;
+      --eucalyptus-deep: #3A4A42;
+      --warm-sand:   #DECFC7;
+      --soft-cream:  #FBF6F0;
+      --charcoal:    #333333;
+      --near-black:  #1a1a1a;
+      --white:       #FFFFFF;
+      --light-grey:  #F7F5F2;
+      --mist:        #E8E4DF;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body:    'Poppins', sans-serif;
+    }
+
+    html { font-size: 16px; scroll-behavior: auto; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--soft-cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===========================
+       FILM GRAIN OVERLAY
+    =========================== */
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* ===========================
+       NAVIGATION
+    =========================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 48px;
+      transition: background 0.5s ease, padding 0.4s ease, backdrop-filter 0.5s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(251, 246, 240, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 18px 48px;
+      border-bottom: 1px solid var(--mist);
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      transition: color 0.4s ease;
+    }
+
+    .nav.scrolled .nav-logo { color: var(--near-black); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      transition: color 0.3s ease;
+    }
+
+    .nav.scrolled .nav-links a { color: var(--charcoal); }
+    .nav-links a:hover { color: var(--white); }
+    .nav.scrolled .nav-links a:hover { color: var(--eucalyptus); }
+
+    .nav-cta {
+      color: var(--near-black) !important;
+      background: var(--warm-sand);
+      padding: 10px 22px;
+      border-radius: 2px;
+      transition: background 0.3s ease, color 0.3s ease !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--eucalyptus) !important;
+      color: var(--white) !important;
+    }
+
+    /* Mobile nav */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+    .nav-toggle span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+    .nav.scrolled .nav-toggle span { background: var(--charcoal); }
+
+    /* ===========================
+       HERO - VIDEO
+    =========================== */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      transform: scale(1.05);
+      transform-origin: center center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(26, 26, 26, 0.2) 0%,
+        rgba(26, 26, 26, 0.05) 30%,
+        rgba(26, 26, 26, 0.5) 70%,
+        rgba(26, 26, 26, 0.8) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 80px 80px;
+      max-width: 900px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm-sand);
+      margin-bottom: 20px;
+      opacity: 0;
+    }
+
+    .hero-brand {
+      font-family: var(--font-heading);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      font-weight: 400;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 20px;
+      opacity: 0;
+    }
+
+    .hero-brand em { font-style: italic; color: var(--warm-sand); }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 44px;
+      opacity: 0;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--near-black);
+      background: var(--warm-sand);
+      padding: 16px 36px;
+      border-radius: 2px;
+      transition: background 0.3s ease, color 0.3s ease;
+      opacity: 0;
+    }
+
+    .hero-cta:hover { background: var(--white); color: var(--near-black); }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px; right: 48px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+    }
+
+    .hero-scroll-hint span {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-line {
+      width: 1px; height: 48px;
+      background: rgba(255,255,255,0.35);
+      position: relative; overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute; top: -100%; left: 0;
+      width: 100%; height: 100%;
+      background: var(--warm-sand);
+      animation: scrollDrop 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollDrop { 0% { top: -100%; } 100% { top: 200%; } }
+
+    /* ===========================
+       CINEMATIC PARALLAX BREAK
+    =========================== */
+    .cine-break {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      overflow: hidden;
+    }
+
+    .cine-break img {
+      position: absolute;
+      inset: -15% 0;
+      width: 100%;
+      height: 130%;
+      object-fit: cover;
+    }
+
+    .cine-break-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(26, 26, 26, 0.4) 0%,
+        rgba(26, 26, 26, 0.2) 50%,
+        rgba(26, 26, 26, 0.5) 100%
+      );
+    }
+
+    .cine-break-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      z-index: 2;
+    }
+
+    .cine-break-text h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.15;
+      opacity: 0;
+    }
+
+    .cine-break-text h2 em { font-style: italic; color: var(--warm-sand); }
+
+    .cine-break-text p {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-top: 16px;
+      opacity: 0;
+    }
+
+    /* ===========================
+       SECTION UTILITIES
+    =========================== */
+    .section-label {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--eucalyptus);
+      margin-bottom: 16px;
+      opacity: 0;
+    }
+
+    .section-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--near-black);
+      margin-bottom: 28px;
+      opacity: 0;
+    }
+
+    .section-heading em { font-style: italic; color: var(--eucalyptus); }
+
+    .body-text {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--charcoal);
+      margin-bottom: 20px;
+      opacity: 0;
+    }
+
+    /* ===========================
+       ABOUT
+    =========================== */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 80vh;
+    }
+
+    .about-image-wrap {
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      min-height: 600px;
+    }
+
+    .about-text {
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-detail {
+      display: flex;
+      gap: 32px;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--mist);
+      opacity: 0;
+    }
+
+    .about-detail-item { display: flex; flex-direction: column; gap: 4px; }
+    .about-detail-label {
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--eucalyptus);
+    }
+    .about-detail-value {
+      font-family: var(--font-heading);
+      font-size: 1.15rem; font-weight: 400; color: var(--near-black);
+    }
+
+    .detail-sep { width: 1px; background: var(--mist); }
+
+    /* ===========================
+       SERVICES
+    =========================== */
+    .services {
+      padding: 100px 60px;
+      background: var(--soft-cream);
+    }
+
+    .services-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 64px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 48px 40px;
+      border-radius: 4px;
+      border: 1px solid var(--mist);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0; transform: translateY(30px) scale(0.97);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px) scale(1);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+    }
+
+    .service-number {
+      font-family: var(--font-heading);
+      font-size: 2.4rem; font-weight: 400;
+      color: var(--mist);
+      display: block; margin-bottom: 20px;
+    }
+
+    .service-image {
+      width: 100%; height: 220px;
+      object-fit: cover;
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+
+    .service-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem; font-weight: 500;
+      color: var(--near-black);
+      margin-bottom: 16px;
+    }
+
+    .service-desc {
+      font-size: 0.88rem; font-weight: 300;
+      line-height: 1.8; color: var(--charcoal);
+      margin-bottom: 20px;
+    }
+
+    .service-tag {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--eucalyptus);
+      padding: 6px 14px;
+      background: rgba(84, 96, 92, 0.06);
+      border-radius: 2px;
+    }
+
+    /* ===========================
+       GALLERY MARQUEE
+    =========================== */
+    .gallery-marquee {
+      overflow: hidden;
+      padding: 20px 0;
+      background: var(--near-black);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: marqueeScroll 40s linear infinite;
+    }
+
+    .marquee-track img {
+      height: 300px;
+      width: auto;
+      object-fit: cover;
+      border-radius: 2px;
+      filter: grayscale(20%);
+      transition: filter 0.4s ease;
+    }
+
+    .marquee-track img:hover { filter: grayscale(0%); }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===========================
+       THE SPACE
+    =========================== */
+    .space {
+      padding: 100px 60px;
+      background: var(--white);
+    }
+
+    .space-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .space-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .space-images img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 3px;
+      opacity: 0;
+    }
+
+    .space-images img:first-child {
+      grid-column: 1 / -1;
+      height: 320px;
+    }
+
+    .space-text { padding: 20px 0; }
+
+    .space-quote {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--eucalyptus);
+      padding: 24px 0;
+      border-left: 2px solid var(--warm-sand);
+      padding-left: 24px;
+      margin: 24px 0;
+      opacity: 0;
+    }
+
+    /* ===========================
+       BOOKING
+    =========================== */
+    .booking {
+      padding: 100px 60px;
+      background: var(--eucalyptus-deep);
+      text-align: center;
+      color: var(--white);
+    }
+
+    .booking .section-label { color: var(--warm-sand); }
+    .booking .section-heading { color: var(--white); }
+    .booking .section-heading em { color: var(--warm-sand); }
+    .booking .body-text { color: rgba(255,255,255,0.75); }
+
+    .booking-price {
+      font-family: var(--font-heading);
+      font-size: 4rem; font-weight: 400;
+      color: var(--warm-sand);
+      margin-top: 40px;
+      opacity: 0;
+    }
+
+    .booking-price-label {
+      font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 36px;
+      opacity: 0;
+    }
+
+    .booking-cta {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--near-black);
+      background: var(--warm-sand);
+      padding: 18px 48px;
+      border-radius: 2px;
+      transition: background 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+    }
+
+    .booking-cta:hover { background: var(--white); transform: translateY(-2px); }
+
+    .booking-contact {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 56px;
+    }
+
+    .contact-item { text-align: center; opacity: 0; }
+    .contact-label {
+      display: block;
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+    .contact-value {
+      font-family: var(--font-heading);
+      font-size: 1rem; color: var(--white);
+    }
+    .contact-value a { color: var(--warm-sand); }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    .footer {
+      background: var(--near-black);
+      padding: 56px 60px 36px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand { display: flex; flex-direction: column; gap: 6px; }
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 1.3rem; font-weight: 400; color: var(--white);
+    }
+    .footer-logo em { font-style: italic; color: var(--warm-sand); }
+    .footer-tagline { font-size: 0.75rem; font-weight: 300; }
+
+    .footer-nav {
+      display: flex; gap: 28px; list-style: none;
+      font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .footer-nav a:hover { color: var(--warm-sand); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      font-size: 0.72rem;
+    }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+
+      .hero-content { padding: 0 32px 60px; }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image { min-height: 400px; }
+      .about-text { padding: 48px 32px; }
+
+      .services { padding: 64px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+
+      .space { padding: 64px 24px; }
+      .space-inner { grid-template-columns: 1fr; }
+      .space-images { grid-template-columns: 1fr; }
+
+      .booking { padding: 64px 24px; }
+      .booking-contact { flex-direction: column; gap: 28px; }
+
+      .footer-top { flex-direction: column; gap: 24px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .footer-nav { justify-content: center; }
+
+      .cine-break { height: 45vh; min-height: 300px; }
+      .marquee-track img { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FILM GRAIN -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">Peace of Eden</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#the-space">The Space</a></li>
+      <li><a href="#booking" class="nav-cta">Book a Session</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO - VIDEO -->
+  <section class="hero" id="hero">
+    <video
+      class="hero-video"
+      src="hero-video.mp4"
+      autoplay muted loop playsinline
+      poster="images/kane-hero.jpg"
+    ></video>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Kiel Mountain, Sunshine Coast QLD</p>
+      <h1 class="hero-brand">Peace of<br /><em>Eden</em></h1>
+      <p class="hero-subtitle">Holistic Healing with Kane Rawle - Multi-Modality Practitioner</p>
+      <a href="https://api.leadconnectorhq.com/widget/groups/poekaneclients" target="_blank" class="hero-cta">
+        Book a Session
+      </a>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-image-wrap reveal-left">
+      <img class="about-image" src="images/kane-about-new.jpg"
+        alt="Kane Rawle standing beside the Peace of Eden clinic" />
+    </div>
+
+    <div class="about-text">
+      <span class="section-label reveal">About Kane</span>
+      <h2 class="section-heading reveal">
+        A grounded force for<br /><em>your healing journey.</em>
+      </h2>
+      <p class="body-text reveal">
+        Kane Rawle is known for his quiet, observant energy - a steadying masculine presence that becomes an anchor when you are feeling out of alignment and searching for the wisdom held within your own body.
+      </p>
+      <p class="body-text reveal">
+        As a multi-modality practitioner, Kane weaves together ancient healing traditions and contemporary practice to meet you exactly where you are. Whether that is deep in chronic pain, navigating emotional turbulence, or simply feeling disconnected from yourself, his approach is patient, precise, and deeply intentional.
+      </p>
+      <p class="body-text reveal">
+        Operating from his sanctuary nestled in the hinterland of the Sunshine Coast, Kane holds space for real, lasting change - not quick fixes. Each session is tailored to what your system needs, not what a protocol prescribes.
+      </p>
+
+      <div class="about-detail reveal">
+        <div class="about-detail-item">
+          <span class="about-detail-label">Practice</span>
+          <span class="about-detail-value">Peace of Eden</span>
+        </div>
+        <div class="detail-sep"></div>
+        <div class="about-detail-item">
+          <span class="about-detail-label">Location</span>
+          <span class="about-detail-value">Kiel Mountain, QLD</span>
+        </div>
+        <div class="detail-sep"></div>
+        <div class="about-detail-item">
+          <span class="about-detail-label">Sessions from</span>
+          <span class="about-detail-value">$140</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CINEMATIC BREAK 1 -->
+  <div class="cine-break">
+    <img src="images/kane-bali-3.jpg" alt="Kane in Bali retreat setting" class="cine-parallax" />
+    <div class="cine-break-overlay"></div>
+    <div class="cine-break-text">
+      <h2 class="cine-reveal">Ancient wisdom.<br /><em>Modern practice.</em></h2>
+      <p class="cine-reveal">Four modalities, one intention</p>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <span class="section-label reveal">What Kane Offers</span>
+      <h2 class="section-heading reveal">
+        Healing that meets you<br /><em>where you are.</em>
+      </h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-number">01</span>
+        <h3 class="service-title">Bioresonance</h3>
+        <p class="service-desc">
+          Using advanced biofeedback technology, bioresonance identifies and works with the root frequencies affecting your health. A non-invasive, deeply investigative modality that looks beneath the surface to find what your body is really trying to tell you.
+        </p>
+        <span class="service-tag">Frequency-Based Healing</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-number">02</span>
+        <img class="service-image" src="images/kane-acupuncture-new.jpg"
+          alt="Kane placing acupuncture needles with steady precision" />
+        <h3 class="service-title">Esoteric Acupuncture</h3>
+        <p class="service-desc">
+          Sacred geometry meets acupuncture. Kane's esoteric practice realigns your chakra system and energetic body through precision needlework, drawing on traditional Chinese medicine and expanded metaphysical frameworks.
+        </p>
+        <span class="service-tag">Energy Body - Chakra Alignment</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-number">03</span>
+        <img class="service-image" src="images/kane-breathwork-new.jpg"
+          alt="A client in deep breathwork session" />
+        <h3 class="service-title">Breathwork</h3>
+        <p class="service-desc">
+          1:1 guided breath journeys designed for expression, release, and deep transformation. Breathwork creates access to states that talk therapy rarely reaches - held safely within Kane's calm, experienced presence.
+        </p>
+        <span class="service-tag">Release - Expression - Integration</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-number">04</span>
+        <img class="service-image" src="images/kane-sound-new.jpg"
+          alt="Kane with didgeridoo in Bali" style="object-position: center 25%;" />
+        <h3 class="service-title">Sound Healing</h3>
+        <p class="service-desc">
+          Koshi chimes, singing bowls, and carefully curated vibrational instruments recalibrate your nervous system. Sound bypasses the thinking mind and communicates directly with the body - resetting patterns held in tissue, not just thought.
+        </p>
+        <span class="service-tag">Nervous System - Vibrational Reset</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY MARQUEE -->
+  <div class="gallery-marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <img src="images/kane-gallery1.jpg" alt="" />
+      <img src="images/kane-bali-1.jpg" alt="" />
+      <img src="images/kane-gallery2.jpg" alt="" />
+      <img src="images/bali-space-1.jpg" alt="" />
+      <img src="images/kane-gallery3.jpg" alt="" />
+      <img src="images/kane-bali-4.jpg" alt="" />
+      <img src="images/kane-bali-2.jpg" alt="" />
+      <img src="images/bali-space-2.jpg" alt="" />
+      <!-- Duplicate for seamless loop -->
+      <img src="images/kane-gallery1.jpg" alt="" />
+      <img src="images/kane-bali-1.jpg" alt="" />
+      <img src="images/kane-gallery2.jpg" alt="" />
+      <img src="images/bali-space-1.jpg" alt="" />
+      <img src="images/kane-gallery3.jpg" alt="" />
+      <img src="images/kane-bali-4.jpg" alt="" />
+      <img src="images/kane-bali-2.jpg" alt="" />
+      <img src="images/bali-space-2.jpg" alt="" />
+    </div>
+  </div>
+
+  <!-- CINEMATIC BREAK 2 -->
+  <div class="cine-break">
+    <img src="images/kane-bali-5.jpg" alt="Kane in nature" class="cine-parallax" />
+    <div class="cine-break-overlay"></div>
+    <div class="cine-break-text">
+      <h2 class="cine-reveal">A sanctuary in the<br /><em>Sunshine Coast hinterland.</em></h2>
+      <p class="cine-reveal">Where the body remembers how to heal</p>
+    </div>
+  </div>
+
+  <!-- THE SPACE -->
+  <section class="space" id="the-space">
+    <div class="space-inner">
+      <div class="space-images">
+        <img src="images/kane-space-main.jpg" alt="Kane holding koshi chimes over retreaters" />
+        <img src="images/kane-space-6.jpg" alt="Group breathwork session" />
+        <img src="images/kane-space-secondary1.jpg" alt="Kane during breathwork in Bali" />
+        <img src="images/kane-space-3.jpg" alt="Flower mandala offering" />
+        <img src="images/kane-space-secondary2.jpg" alt="Koshi chime and seed pods" />
+      </div>
+
+      <div class="space-text">
+        <span class="section-label reveal">The Space</span>
+        <h2 class="section-heading reveal">
+          Where healing<br /><em>begins.</em>
+        </h2>
+        <p class="body-text reveal">
+          Nestled in the hills of Kiel Mountain, the Peace of Eden clinic is not your typical treatment room. It is a living space - surrounded by rainforest, birdsong, and the kind of quiet that the body recognises before the mind catches up.
+        </p>
+
+        <blockquote class="space-quote reveal">
+          "When you arrive here, something in you already begins to exhale."
+        </blockquote>
+
+        <p class="body-text reveal">
+          The space holds the energy of years of intentional practice. Crystals, sound instruments, ceremonial objects, and natural light are woven into the physical environment because healing does not happen in isolation - it happens in relationship with everything around you.
+        </p>
+        <p class="body-text reveal">
+          Sessions are available in-clinic at Kiel Mountain. Online consultations available for bioresonance assessments.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="booking" id="booking">
+    <div style="max-width: 700px; margin: 0 auto;">
+      <span class="section-label reveal">Ready to Begin</span>
+      <h2 class="section-heading reveal">
+        Your body knows the way.<br /><em>Let Kane help you listen.</em>
+      </h2>
+      <p class="body-text reveal" style="max-width: 520px; margin: 0 auto;">
+        Each session is tailored to where you are right now. Whether you are new to holistic healing or a returning client, Kane will meet you with the same steady, unhurried attention.
+      </p>
+
+      <div class="booking-price reveal" aria-label="Sessions from $140">$140</div>
+      <p class="booking-price-label reveal">Sessions from</p>
+
+      <a href="https://api.leadconnectorhq.com/widget/groups/poekaneclients" target="_blank" class="booking-cta reveal">
+        Book with Kane
+      </a>
+
+      <div class="booking-contact">
+        <div class="contact-item reveal">
+          <span class="contact-label">Phone</span>
+          <span class="contact-value"><a href="tel:0402223805">0402 223 805</a></span>
+        </div>
+        <div class="contact-item reveal">
+          <span class="contact-label">Address</span>
+          <span class="contact-value">1 Merimist Way, Kiel Mountain QLD</span>
+        </div>
+        <div class="contact-item reveal">
+          <span class="contact-label">Availability</span>
+          <span class="contact-value">By Appointment</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">Peace of <em>Eden</em></span>
+        <span class="footer-tagline">Holistic Healing - Kiel Mountain, Sunshine Coast QLD</span>
+      </div>
+      <ul class="footer-nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#the-space">The Space</a></li>
+        <li><a href="https://api.leadconnectorhq.com/widget/groups/poekaneclients" target="_blank">Book</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Peace of Eden - All rights reserved.</span>
+      <span>Kane Rawle - Multi-Modality Practitioner | 1 Merimist Way, Kiel Mountain QLD</span>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    /* LENIS SMOOTH SCROLL */
+    const lenis = new Lenis({
+      duration: 1.4,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      smoothTouch: false,
+    });
+
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) lenis.scrollTo(target, { offset: -80, duration: 1.6 });
+      });
+    });
+
+    /* NAV SCROLL STATE */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* MOBILE NAV */
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '100%';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.background = 'rgba(251,246,240,0.98)';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.padding = '24px';
+        navLinks.style.gap = '20px';
+      });
+    }
+
+    /* GSAP REGISTER */
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* HERO ENTRANCE */
+    const heroTl = gsap.timeline({ delay: 0.3 });
+    heroTl
+      .to('.hero-video', { scale: 1, duration: 2.2, ease: 'power2.out' }, 0)
+      .to('.hero-eyebrow', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 0.5)
+      .to('.hero-brand', { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' }, 0.75)
+      .to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 1.05)
+      .to('.hero-cta', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 1.3)
+      .to('.hero-scroll-hint', { opacity: 1, duration: 1, ease: 'power2.out' }, 1.7);
+
+    /* Hero video parallax */
+    gsap.to('.hero-video', {
+      yPercent: 18, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+    });
+
+    /* CINEMATIC PARALLAX BREAKS */
+    document.querySelectorAll('.cine-parallax').forEach((img) => {
+      gsap.to(img, {
+        yPercent: -15, ease: 'none',
+        scrollTrigger: {
+          trigger: img.closest('.cine-break'),
+          start: 'top bottom', end: 'bottom top', scrub: true
+        }
+      });
+    });
+
+    document.querySelectorAll('.cine-reveal').forEach((el) => {
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+      });
+    });
+
+    /* GENERIC REVEAL */
+    function revealEl(selector) {
+      document.querySelectorAll(selector).forEach((el) => {
+        gsap.to(el, {
+          opacity: 1, y: 0, x: 0, scale: 1, duration: 0.9, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+        });
+      });
+    }
+
+    revealEl('.reveal');
+    revealEl('.reveal-left');
+
+    /* SERVICE CARDS - STAGGERED */
+    gsap.to('.service-card', {
+      opacity: 1, scale: 1, y: 0, duration: 0.85, ease: 'power3.out', stagger: 0.18,
+      scrollTrigger: { trigger: '.services-grid', start: 'top 82%', toggleActions: 'play none none none' }
+    });
+
+    /* SPACE IMAGES */
+    gsap.to('.space-images img', {
+      opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.12,
+      scrollTrigger: { trigger: '.space-images', start: 'top 85%', toggleActions: 'play none none none' }
+    });
+
+    /* BOOKING PRICE COUNT-UP */
+    const bookingPriceEl = document.querySelector('.booking-price');
+    if (bookingPriceEl) {
+      const priceObj = { val: 0 };
+      gsap.to(priceObj, {
+        val: 140, duration: 1.4, ease: 'power2.out',
+        onUpdate: () => { bookingPriceEl.textContent = '$' + Math.round(priceObj.val); },
+        onComplete: () => { bookingPriceEl.textContent = '$140'; },
+        scrollTrigger: { trigger: bookingPriceEl, start: 'top 85%', toggleActions: 'play none none none' }
+      });
+    }
+
+    /* FOOTER FADE */
+    gsap.from('.footer', {
+      opacity: 0, duration: 0.8, ease: 'power2.out',
+      scrollTrigger: { trigger: '.footer', start: 'top 95%', toggleActions: 'play none none none' }
+    });
+  </script>
+
+</body>
+</html>
